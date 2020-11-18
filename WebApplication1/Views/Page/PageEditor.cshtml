@@ -1,0 +1,52 @@
+﻿@using PresentationLayer.Models;
+@using DataLayer.Enums;
+@model PageEditModel
+@if (Model is ProjectEditModel)
+{
+    var _currentModel = (ProjectEditModel)Model;
+<form action="/Page/SaveProject" method="post">
+    <input type="hidden" value="@ViewBag.PageType" name="PageType" />
+
+    <h1>Edit Project</h1>
+    <input name="Id" type="hidden" value="@_currentModel.Id" />
+    <p>Name project: </p>
+    <textarea cols="50" name="Name" value="@_currentModel.Name"></textarea>
+    <p>Name of the ordering company: </p>
+    <textarea cols="50"name="OrderCompanu" value="@_currentModel.OrderCompany"></textarea>
+    <p>Name of the executing company: </p>
+    <textarea cols="50" name="NameExeCompany">@_currentModel.NameExeCompany</textarea>
+    <p>Information about the project manager: </p>
+    <textarea cols="50" name="InformationProjectManager">@_currentModel.InformationProjectManager</textarea>
+    <p>Data on the executors of the project: </p>
+    <textarea cols="50" name="DataExeProject">@_currentModel.DataExeProject</textarea>
+    <p>Start and end dates of the project: </p>
+    <input type="datetime-local" id="meeting-time" name="DatesProject" value="@_currentModel.DatesProject"> />
+    <p>Project priority: </p>
+    <textarea cols="50" name="ProjectPriority">@_currentModel.ProjectPriority</textarea>
+    <p></p>
+    <input class="btn btn-dark" type="submit" />
+</form>
+}
+else if (Model is WorkerEditModel)
+{
+    var _currentModel = (WorkerEditModel)Model;
+<form action="/Page/SaveWorker" method="post">
+    <input type="hidden" value="@ViewBag.PageType" name="PageType" />
+
+    <h1>Edit Worker</h1>
+
+    <input name="Id" type="hidden" value="@_currentModel.Id" />
+    <p>Projectid: </p>
+    <input name="Projectid" value="@_currentModel.Projectid" />
+    <p>Name: </p>
+    <input name="Name" value="@_currentModel.Name" />
+    <p>SurName: </p>
+    <input name="SurName" value="@_currentModel.SurName" />
+    <p>Patronymic: </p>
+    <input name="Patronymic" value="@_currentModel.Patronymic" />
+    <p>Mail: </p>
+    <input name="Mail" value="@_currentModel.Mail" />
+    <p></p>
+    <input class="btn btn-dark" type="submit" />
+</form>
+}

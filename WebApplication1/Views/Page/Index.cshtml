@@ -1,0 +1,56 @@
+﻿@using PresentationLayer.Models;
+@using DataLayer.Enums;
+
+
+@model PageViewModel
+
+@if (Model is ProjectViewModel)
+{
+    var _currentModel = (ProjectViewModel)Model;
+    <h1>@_currentModel.Project.Name</h1>
+    <hr />
+    <p>Name of the ordering company: @_currentModel.Project.NameExeCompany</p>
+    <hr />
+    <p>Name of the executing company: @_currentModel.Project.NameExeCompany</p>
+    <hr />
+    <p>Information about the project manager: @_currentModel.Project.InformationProjectManager</p>
+    <hr />
+    <p>Data on the executors of the project: @_currentModel.Project.DataExeProject</p>
+    <hr />
+    <p>Start and end dates of the project: @_currentModel.Project.DatesProject</p>
+    <hr />
+    <p>Project priority: @_currentModel.Project.ProjectPriority</p>
+    <hr />
+    <p>Workers: </p>
+
+    <ul class="list-group">
+        @if (_currentModel.Workers != null)
+        {
+            foreach (var subItem in _currentModel.Workers)
+            {
+                <li class="list-group-item"><a asp-action="Index" asp-controller="Page" asp-route-pageId="@subItem.Worker.Id" asp-route-pageType="@PageEnums.PageType.Worker">@subItem.Worker.Name</a></li>
+            }
+        }
+    </ul>
+}
+else if (Model is WorkerViewModel)
+{
+    var _currentModel = (WorkerViewModel)Model;
+    <hr />
+    <p>Name: @_currentModel.Worker.Name</p>
+    <hr />
+    <p>SurName: @_currentModel.Worker.SurName</p>
+    <hr />
+    <p>Patronymic: @_currentModel.Worker.Patronymic</p>
+    <hr />
+    <p>Mail: @_currentModel.Worker.Mail</p>
+    <hr />
+    <p>Next worker: </p>
+    <hr />
+    if (_currentModel.NextWorker != null)
+    {
+        <ul class="list-group">
+            <li class="list-group-item"> <a asp-action="Index" asp-controller="Page" asp-route-pageId="@_currentModel.NextWorker.Id" asp-route-pageType="@PageEnums.PageType.Worker">@_currentModel.NextWorker.SurName</a></li>
+        </ul>
+    }
+}

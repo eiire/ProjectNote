@@ -1,0 +1,33 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+ul.list-group > div.create_button {
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: -20px;
+}
+
+
+content a {
+    color: #222222;
+}
+
+content a:hover {
+    color: #9d9d9d;
+}
+
+a + a.edit {
+    float: right;
+}
+
+    a + a.edit::first-letter {
+        color: #9d9d9d
+    }
+
+content a:hover::first-letter {
+    color: #222222;
+}

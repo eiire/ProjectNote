@@ -1,0 +1,11 @@
+.vs/
+WebApplication1/bin/
+WebApplication1/obj/
+BuissnesLayer/bin/
+BuissnesLayer/obj/
+DataLayer/bin/
+DataLayer/obj/
+PresentationLayer/bin/
+PresentationLayer/obj/
+DataLayer/Migrations
+view_project.docx
